@@ -30,16 +30,16 @@ export VLLM_LOGGING_LEVEL=INFO
 
 
 ####--------------------
-export VLLM_USE_V1=0 
-export VLLM_TORCH_COMPILE_LEVEL=0
-export TORCH_COMPILE_DISABLE=1
-export VLLM_WORKER_MULTIPROC_METHOD=spawn
-export TMPDIR=/tmp
-export TORCH_EXTENSIONS_DIR="/tmp/torch_extensions_$$"
-mkdir -p "$TORCH_EXTENSIONS_DIR"
-export NCCL_DEBUG=WARN
-export NCCL_IB_DISABLE=0
-export NCCL_NET_GDR_LEVEL=5
+# export VLLM_USE_V1=0 
+# export VLLM_TORCH_COMPILE_LEVEL=0
+# export TORCH_COMPILE_DISABLE=1
+# export VLLM_WORKER_MULTIPROC_METHOD=spawn
+# export TMPDIR=/tmp
+# export TORCH_EXTENSIONS_DIR="/tmp/torch_extensions_$$"
+# mkdir -p "$TORCH_EXTENSIONS_DIR"
+# export NCCL_DEBUG=WARN
+# export NCCL_IB_DISABLE=0
+# export NCCL_NET_GDR_LEVEL=5
 #does not fix the race condition 
 
 

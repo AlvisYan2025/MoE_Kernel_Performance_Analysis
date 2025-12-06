@@ -7,7 +7,6 @@ def test_inference(port=8000):
     url = f"http://localhost:{port}/v1/completions"
     
     data = {
-        "model": "default",
         "prompt": "Explain MoE models in simple terms:",
         "max_tokens": 100,
         "temperature": 0.7
