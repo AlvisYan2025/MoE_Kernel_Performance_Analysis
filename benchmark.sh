@@ -1,5 +1,8 @@
 #the default benchmark script for varying basic configs (batch_size, sequence length, etc)
 #change config in lauch scripts 
+#u can run this in a seprate terminal (ssh to the same node)
+#check with curl http://localhost:8000/health
+
 PORT=${1:-8000}
 NUM_PROMPTS=${2:-100}
 
