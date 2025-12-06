@@ -9,5 +9,9 @@ then install
 ```
 (1) load environment 
 ```bash 
-    chmod +x loadenvs.sh && ./loadenvs.sh
+    chmod +x loadenvs.sh && source loadenvs.sh
+```
+(2) run some launcher 
+```bash
+    chmod +x launch_flashinfer.sh && ./launch_flashinfer.sh
 ```
