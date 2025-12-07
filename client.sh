@@ -3,12 +3,11 @@
 #u can run this in a seprate terminal (ssh to the same node)
 #check with curl http://localhost:8000/health
 
-PORT=${1:-8000}
-NUM_PROMPTS=${2:-100}
+DATASET=${1:-final_project/datasets/high_repetition.jsonl}
+INPUT_SEQUENCE_LEN=${2:-128}
+PORT=${3:-8000}
 
-echo "Waiting for server to be ready..."
-sleep 30
-
+echo "checking server..."
 #check server
 MAX_RETRIES=30
 RETRY_COUNT=0
@@ -32,16 +31,15 @@ echo "========================================="
 echo "Running benchmark with $NUM_PROMPTS prompts"
 echo "========================================="
 
-python -m sglang.bench_serving \
-  --backend vllm \
-  --host localhost \
-  --port $PORT \
-  --dataset-name random \
-  --num-prompts $NUM_PROMPTS \
-  --random-input 1024 \
-  --random-output 512 \
-  --max-concurrency 8 \
-  | tee outputs/benchmark_results.txt
+
+python3 benchmark.py \
+    --backend vllm \
+    --model mistralai/Mixtral-8x7B-v0.1 \
+    --dataset-name custom \
+    --dataset-path ${DATASET} \
+    --num-prompts 30 \
+    --save-result \
+    --result-dir outputs/
 
 echo "========================================="
 echo "Benchmark complete! Results saved to benchmark_results.txt"
