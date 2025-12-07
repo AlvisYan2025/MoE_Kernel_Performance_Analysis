@@ -14,7 +14,7 @@ mkdir -p "$LOGS_DIR"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 LOG_FILE="${LOGS_DIR}/vllm_defualt_${TIMESTAMP}_batch${BATCH_TOKENS}_seq${MAX_SEQS}_modellen${MAX_MODEL_LEN}.log"
 
-HF_CACHE_DIR="${SCRIPT_DIR}/hf_cache"
+HF_CACHE_DIR="${SCRIPT_DIR}/../hf_cache"
 mkdir -p "$HF_CACHE_DIR"
 export HF_HOME="$HF_CACHE_DIR"
 

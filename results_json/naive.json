@@ -1,0 +1,46 @@
+{
+    "mode": "naive",
+    "total_requests": 100,
+    "results": {
+        "1": {
+            "avg_latency_ms": 778.0318284034729,
+            "p50_latency_ms": 774.669885635376,
+            "p95_latency_ms": 815.9346342086792,
+            "avg_ttfb_ms": 64.61144712143236,
+            "avg_tpot_ms": 70.89092242158681,
+            "num_requests": 100
+        },
+        "4": {
+            "avg_latency_ms": 608.9815258979797,
+            "p50_latency_ms": 607.6415777206421,
+            "p95_latency_ms": 625.4440188407898,
+            "avg_ttfb_ms": 50.56101226775545,
+            "avg_tpot_ms": 55.617784075128846,
+            "num_requests": 100
+        },
+        "8": {
+            "avg_latency_ms": 681.6877846916517,
+            "p50_latency_ms": 681.0235977172852,
+            "p95_latency_ms": 689.4317269325256,
+            "avg_ttfb_ms": 57.707228607715855,
+            "avg_tpot_ms": 63.366410160144255,
+            "num_requests": 96
+        },
+        "16": {
+            "avg_latency_ms": 711.3627791404724,
+            "p50_latency_ms": 705.499529838562,
+            "p95_latency_ms": 741.7295098304749,
+            "avg_ttfb_ms": 62.8697514161333,
+            "avg_tpot_ms": 69.45904835916438,
+            "num_requests": 96
+        },
+        "32": {
+            "avg_latency_ms": 746.0715745886167,
+            "p50_latency_ms": 740.4192686080933,
+            "p95_latency_ms": 776.2869119644165,
+            "avg_ttfb_ms": 61.67516168617337,
+            "avg_tpot_ms": 67.5558720972787,
+            "num_requests": 96
+        }
+    }
+}
