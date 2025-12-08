@@ -4,7 +4,7 @@
 # ./launch_baseline.sh mistralai/Mixtral-8x7B-Instruct-v0.1 8001 4096 16 4096
 
 MODEL=${1:-"mistralai/Mixtral-8x7B-v0.1"}
-PORT=${2:-8001}  
+PORT=${2:-8000}  
 BATCH_TOKENS=${3:-8192}     
 MAX_SEQS=${4:-32}          
 MAX_MODEL_LEN=${5:-4096}
@@ -48,5 +48,6 @@ vllm serve $MODEL \
   --max-model-len $MAX_MODEL_LEN \
   --max-num-batched-tokens $BATCH_TOKENS \
   --max-num-seqs $MAX_SEQS \
+  --enforce-eager \
   --disable-log-requests \
   2>&1 | tee "$LOG_FILE"
