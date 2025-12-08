@@ -39,8 +39,5 @@ python3 benchmark.py \
     --dataset-path ${DATASET} \
     --num-prompts 30 \
     --save-result \
-    --result-dir outputs/
+    --result-dir results_json/
 
-echo "========================================="
-echo "Benchmark complete! Results saved to benchmark_results.txt"
-echo "========================================="
