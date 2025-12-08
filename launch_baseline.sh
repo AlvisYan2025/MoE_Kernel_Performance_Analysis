@@ -5,10 +5,10 @@
 
 MODEL=${1:-"mistralai/Mixtral-8x7B-v0.1"}
 PORT=${2:-8001}  
-BATCH_TOKENS=${3:-4096}     
-MAX_SEQS=${4:-16}          
+BATCH_TOKENS=${3:-8192}     
+MAX_SEQS=${4:-32}          
 MAX_MODEL_LEN=${5:-4096}
-TP_SIZE=${6:-1}  
+TP_SIZE=${6:-4}  
 
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
@@ -18,7 +18,7 @@ TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 LOG_FILE="${LOGS_DIR}/vllm_baseline_${TIMESTAMP}_tp${TP_SIZE}_batch${BATCH_TOKENS}_seq${MAX_SEQS}_modellen${MAX_MODEL_LEN}.log"
 
 # Use cache -- comment off if not using cache
-HF_CACHE_DIR="${SCRIPT_DIR}/hf_cache"
+HF_CACHE_DIR="${SCRIPT_DIR}/../hf_cache"
 mkdir -p "$HF_CACHE_DIR"
 export HF_HOME="$HF_CACHE_DIR"
 export HUGGINGFACE_HUB_CACHE="$HF_CACHE_DIR"
