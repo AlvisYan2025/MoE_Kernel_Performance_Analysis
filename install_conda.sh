@@ -11,8 +11,15 @@ echo "done"
 
 git clone https://github.com/vllm-project/vllm/
 cd vllm
-git reset --hard 2f13319f47eb9a78b471c5ced0fcf90862cd16a2
-VLLM_USE_PRECOMPILED=1 python3 -m pip install -e .
+git checkout v0.11.0
+python3 -m pip install setuptools-scm setuptools wheel ninja packaging cmake
+module load gcc/11.2.0
+module load cuda
+python3 -m pip install torch==2.4.0 torchvision==0.19.0 --index-url https://download.pytorch.org/whl/cu121
+
+#git reset --hard 2f13319f47eb9a78b471c5ced0fcf90862cd16a2
+#VLLM_USE_PRECOMPILED=1 python3 -m pip install -e .
+python3 -m pip install -e . --no-build-isolation
 cd .. 
 
 #install model (mistralai/Mixtral-8x7B-v0.1)

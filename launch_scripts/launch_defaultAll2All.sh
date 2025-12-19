@@ -7,6 +7,7 @@ BATCH_TOKENS=${3:-8192}
 MAX_SEQS=${4:-32}          
 MAX_MODEL_LEN=${5:-4096}
 EP_SIZE=${6:-4}
+PROFILE=${7:-1} 
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 LOGS_DIR="${SCRIPT_DIR}/logs"
@@ -14,7 +15,7 @@ mkdir -p "$LOGS_DIR"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 LOG_FILE="${LOGS_DIR}/vllm_defualt_${TIMESTAMP}_batch${BATCH_TOKENS}_seq${MAX_SEQS}_modellen${MAX_MODEL_LEN}.log"
 
-HF_CACHE_DIR="${SCRIPT_DIR}/../hf_cache"
+HF_CACHE_DIR="${SCRIPT_DIR}/hf_cache"
 mkdir -p "$HF_CACHE_DIR"
 export HF_HOME="$HF_CACHE_DIR"
 
@@ -27,6 +28,8 @@ echo "========================================="
 
 export VLLM_FLASHINFER_MOE_BACKEND="throughput"
 export VLLM_LOGGING_LEVEL=INFO
+export VLLM_ENABLE_EXPERT_LOAD_BALANCING=1 #toggle for EPLB experiment 
+
 
 
 ####--------------------
@@ -42,6 +45,24 @@ export VLLM_LOGGING_LEVEL=INFO
 # export NCCL_NET_GDR_LEVEL=5
 #does not fix the race condition 
 
+# Profiling setup
+if [ "$PROFILE" -eq 1 ]; then
+    PROFILE_DIR="${SCRIPT_DIR}/profiles"
+    mkdir -p "$PROFILE_DIR"
+    PROFILE_FILE="${PROFILE_DIR}/nsys_${TIMESTAMP}.qdrep"
+    
+    # Nsight Systems profiling command
+    PROFILER="nsys profile \
+        --output=$PROFILE_FILE \
+        --trace=cuda,nvtx,osrt \
+        --cuda-memory-usage=true \
+        --delay=30 \
+        --duration=60 \
+        --sample=cpu \
+        --backtrace=dwarf"
+else
+    PROFILER=""
+fi
 
 #removed --all2all-backend flashinfer_all2allv
 vllm serve $MODEL \

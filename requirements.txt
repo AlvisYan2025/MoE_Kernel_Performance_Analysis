@@ -1,4 +1,4 @@
-vllm
 numpy
 requests
 tqdm
+vllm==0.11
