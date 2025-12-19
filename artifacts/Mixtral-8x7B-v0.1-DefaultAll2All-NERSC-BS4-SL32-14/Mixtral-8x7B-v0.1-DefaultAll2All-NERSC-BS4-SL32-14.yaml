@@ -1,0 +1,30 @@
+name: Mixtral-8x7B-v0.1-DefaultAll2All-NERSC-BS4-SL32-14
+model: mistralai/Mixtral-8x7B-v0.1
+framework: vllm
+platform:
+  system: nersc-perlmutter
+  gpu_type: A100-80GB
+  num_gpus: 4
+  interconnect: nvlink
+parallelism:
+  tensor_parallel_size: 4
+  pipeline_parallel_size: 1
+  data_parallel_size: 1
+expert_parallel:
+  mode: default_all_to_all      
+  eplb: false                  
+  top_k: 2
+workload:
+  batch_size: 4
+  input_sequence_length: 32
+  output_sequence_length: 32
+limits:
+  max_model_len: 32
+  max_num_batched_tokens: 128
+  max_num_seqs: 4
+tracing:
+  tool: nsys
+  capture: true
+  scope: steady_state
+  warmup_steps: 5
+  capture_steps: 20
