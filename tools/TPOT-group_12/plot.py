@@ -17,26 +17,38 @@ data_by_seqs = defaultdict(lambda: {"Baseline": [], "DefaultAll2All": []})
 data_by_tokens = defaultdict(lambda: {"Baseline": [], "DefaultAll2All": []})
 
 for exp_dir in trace_collection_dir.iterdir():
-    if not exp_dir.is_dir():
+    if not exp_dir.is_dir() or not exp_dir.name.startswith("Mixtral8x7B-"):
         continue
     
-    if "EPLBOFF" in exp_dir.name or "EPLBON" in exp_dir.name:
+    if "_eplboff" in exp_dir.name.lower() or "_eplbon" in exp_dir.name.lower():
         continue
     
     parts = exp_dir.name.split("-")
-    if len(parts) != 8 or parts[0] != "Mixtral" or parts[4] != "NERSC" or parts[-1] != "12":
+    if len(parts) < 4 or parts[0] != "Mixtral8x7B" or not parts[-1].endswith("group12"):
         continue
     
-    model_type_str = parts[3]
-    if "Baseline" in model_type_str:
+    framework_parallelism = parts[1]
+    if framework_parallelism == "vllmTP4":
         model_type = "Baseline"
-    elif "DefaultAll2All" in model_type_str:
+    elif framework_parallelism == "vllmEP4":
         model_type = "DefaultAll2All"
     else:
         continue
     
-    max_seqs = int(parts[5])
-    max_tokens = int(parts[6])
+    platform_part = parts[2]
+    if not platform_part.startswith("Perlmutter[") or not platform_part.endswith("]"):
+        continue
+    
+    config_str = platform_part[12:-1]
+    config_parts = config_str.split("_")
+    if len(config_parts) < 3:
+        continue
+    
+    try:
+        max_seqs = int(config_parts[-2])
+        max_tokens = int(config_parts[-1])
+    except ValueError:
+        continue
     
     results_dir = exp_dir / "results_json"
     if not results_dir.exists():
