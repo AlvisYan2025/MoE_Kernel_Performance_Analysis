@@ -16,10 +16,12 @@ import asyncio
 import json
 import os
 import random
+import sys
 import time
 import warnings
 from dataclasses import dataclass
 from datetime import datetime
+from pathlib import Path
 from typing import AsyncGenerator, List, Optional, Tuple
 
 import numpy as np
@@ -30,8 +32,12 @@ from transformers import PreTrainedTokenizerBase
 
 from vllm.transformers_utils.tokenizer import get_tokenizer
 
+# Add parent directory to path to import from data_analysis_pipeline
+parent_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(parent_dir))
+
 # Import our imbalance predictor
-from dataset_metrics import ImbalancePredictor
+from data_analysis_pipeline.dataset_metrics import ImbalancePredictor
 
 
 @dataclass
