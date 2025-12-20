@@ -1,4 +1,7 @@
 numpy
 requests
 tqdm
-vllm==0.11
+matplotlib
+transformers
+scikit-learn
+pandas
