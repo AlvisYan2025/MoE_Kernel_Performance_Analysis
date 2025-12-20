@@ -2,8 +2,8 @@
 
 MODEL=${1:-"mistralai/Mixtral-8x7B-v0.1"}
 PORT=${2:-8000}
-BATCH_TOKENS=${3:-10384}     
-MAX_SEQS=${4:-32}          
+BATCH_TOKENS=${3:-8192}     
+MAX_SEQS=${4:-64}          
 MAX_MODEL_LEN=${5:-4096}
 EP_SIZE=${6:-4}
 

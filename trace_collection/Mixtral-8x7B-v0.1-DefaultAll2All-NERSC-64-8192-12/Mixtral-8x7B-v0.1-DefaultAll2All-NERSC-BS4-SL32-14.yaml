@@ -1,0 +1,28 @@
+name: Mixtral-8x7B-v0.1-DefaultAll2All-NERSC-8-16384-12
+model: mistralai/Mixtral-8x7B-v0.1
+framework: vllm
+platform:
+  system: nersc-perlmutter
+  gpu_type: A100
+  num_gpus: 4
+  interconnect: nvlink
+parallelism:
+  tensor_parallel_size: 1
+  pipeline_parallel_size: 1
+  expert_parallel_size: 4
+expert_parallel:
+  mode: default_all_to_all      
+  eplb: false                  
+  top_k: 2
+workload:
+  num_prompts: 50 
+  dataset: ShareGPT_V3_unfiltered_cleaned_split
+limits:
+  max_model_len: 4096
+  max_num_batched_tokens: 8192
+  max_num_seqs: 64
+tracing:
+  tool: nsys
+  capture: true
+  scope: steady_state
+

@@ -1,0 +1,264 @@
+INFO 12-20 01:02:03 [__init__.py:241] Automatically detected platform cuda.
+WARNING 12-20 01:02:07 [__init__.py:1750] argument '--disable-log-requests' is deprecated and replaced with '--enable-log-requests'. This will be removed in v0.12.0.
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:02:07 [api_server.py:1875] vLLM API server version 0.10.1rc2.dev263+g2f13319f4
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:02:07 [utils.py:326] non-default args: {'model_tag': 'mistralai/Mixtral-8x7B-v0.1', 'host': '0.0.0.0', 'model': 'mistralai/Mixtral-8x7B-v0.1', 'trust_remote_code': True, 'max_model_len': 4096, 'enforce_eager': True, 'data_parallel_size': 4, 'enable_expert_parallel': True, 'max_num_batched_tokens': 8192, 'max_num_seqs': 16}
+[1;36m(APIServer pid=1301285)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:02:16 [__init__.py:742] Resolved architecture: MixtralForCausalLM
+[1;36m(APIServer pid=1301285)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:02:16 [__init__.py:1786] Using max model len 4096
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:02:16 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=8192.
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:02:16 [__init__.py:3638] Cudagraph is disabled under eager mode
+[1;36m(APIServer pid=1301285)[0;0m /pscratch/sd/s/sz755/MoE_Kernel_Performance_Analysis/vllm/vllm/transformers_utils/tokenizer_group.py:26: FutureWarning: It is strongly recommended to run mistral models with `--tokenizer-mode "mistral"` to ensure correct encoding and decoding.
+[1;36m(APIServer pid=1301285)[0;0m   self.tokenizer = get_tokenizer(self.tokenizer_id, **tokenizer_config)
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:02:17 [utils.py:625] Started DP Coordinator process (PID: 1301619)
+INFO 12-20 01:02:23 [__init__.py:241] Automatically detected platform cuda.
+INFO 12-20 01:02:23 [__init__.py:241] Automatically detected platform cuda.
+INFO 12-20 01:02:23 [__init__.py:241] Automatically detected platform cuda.
+INFO 12-20 01:02:23 [__init__.py:241] Automatically detected platform cuda.
+INFO 12-20 01:02:23 [__init__.py:241] Automatically detected platform cuda.
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:26 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:26 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:26 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:26 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:26 [core.py:74] Initializing a V1 LLM engine (v0.10.1rc2.dev263+g2f13319f4) with config: model='mistralai/Mixtral-8x7B-v0.1', speculative_config=None, tokenizer='mistralai/Mixtral-8x7B-v0.1', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=mistralai/Mixtral-8x7B-v0.1, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":0,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":null,"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":0,"use_cudagraph":true,"cudagraph_num_of_warmups":0,"cudagraph_capture_sizes":[],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":0,"local_cache_dir":null}
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:26 [core.py:74] Initializing a V1 LLM engine (v0.10.1rc2.dev263+g2f13319f4) with config: model='mistralai/Mixtral-8x7B-v0.1', speculative_config=None, tokenizer='mistralai/Mixtral-8x7B-v0.1', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=mistralai/Mixtral-8x7B-v0.1, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":0,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":null,"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":0,"use_cudagraph":true,"cudagraph_num_of_warmups":0,"cudagraph_capture_sizes":[],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":0,"local_cache_dir":null}
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:26 [core.py:74] Initializing a V1 LLM engine (v0.10.1rc2.dev263+g2f13319f4) with config: model='mistralai/Mixtral-8x7B-v0.1', speculative_config=None, tokenizer='mistralai/Mixtral-8x7B-v0.1', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=mistralai/Mixtral-8x7B-v0.1, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":0,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":null,"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":0,"use_cudagraph":true,"cudagraph_num_of_warmups":0,"cudagraph_capture_sizes":[],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":0,"local_cache_dir":null}
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:26 [core.py:74] Initializing a V1 LLM engine (v0.10.1rc2.dev263+g2f13319f4) with config: model='mistralai/Mixtral-8x7B-v0.1', speculative_config=None, tokenizer='mistralai/Mixtral-8x7B-v0.1', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=mistralai/Mixtral-8x7B-v0.1, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":0,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":null,"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":0,"use_cudagraph":true,"cudagraph_num_of_warmups":0,"cudagraph_capture_sizes":[],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":0,"local_cache_dir":null}
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:29 [parallel_state.py:992] Adjusting world_size=4 rank=0 distributed_init_method=tcp://127.0.0.1:42257 for DP
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:29 [parallel_state.py:992] Adjusting world_size=4 rank=3 distributed_init_method=tcp://127.0.0.1:42257 for DP
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:29 [parallel_state.py:992] Adjusting world_size=4 rank=1 distributed_init_method=tcp://127.0.0.1:42257 for DP
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:29 [parallel_state.py:992] Adjusting world_size=4 rank=2 distributed_init_method=tcp://127.0.0.1:42257 for DP
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:29 [__init__.py:1426] Found nccl from library libnccl.so.2
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:29 [__init__.py:1426] Found nccl from library libnccl.so.2
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:29 [__init__.py:1426] Found nccl from library libnccl.so.2
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:29 [pynccl.py:70] vLLM is using nccl==2.26.2
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:29 [pynccl.py:70] vLLM is using nccl==2.26.2
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:29 [pynccl.py:70] vLLM is using nccl==2.26.2
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:29 [__init__.py:1426] Found nccl from library libnccl.so.2
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:29 [pynccl.py:70] vLLM is using nccl==2.26.2
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:31 [cuda_communicator.py:86] Using naive all2all manager.
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:31 [cuda_communicator.py:86] Using naive all2all manager.
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:31 [cuda_communicator.py:86] Using naive all2all manager.
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:31 [cuda_communicator.py:86] Using naive all2all manager.
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:31 [parallel_state.py:1134] rank 3 in world size 4 is assigned as DP rank 3, PP rank 0, TP rank 0, EP rank 3
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:31 [parallel_state.py:1134] rank 2 in world size 4 is assigned as DP rank 2, PP rank 0, TP rank 0, EP rank 2
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:31 [parallel_state.py:1134] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:31 [parallel_state.py:1134] rank 1 in world size 4 is assigned as DP rank 1, PP rank 0, TP rank 0, EP rank 1
+[1;36m(EngineCore_3 pid=1301625)[0;0m WARNING 12-20 01:02:31 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_2 pid=1301624)[0;0m WARNING 12-20 01:02:31 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_0 pid=1301622)[0;0m WARNING 12-20 01:02:31 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_1 pid=1301623)[0;0m WARNING 12-20 01:02:31 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:31 [gpu_model_runner.py:1929] Starting to load model mistralai/Mixtral-8x7B-v0.1...
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:31 [gpu_model_runner.py:1929] Starting to load model mistralai/Mixtral-8x7B-v0.1...
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:31 [gpu_model_runner.py:1929] Starting to load model mistralai/Mixtral-8x7B-v0.1...
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:31 [gpu_model_runner.py:1929] Starting to load model mistralai/Mixtral-8x7B-v0.1...
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:31 [gpu_model_runner.py:1961] Loading model from scratch...
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:31 [gpu_model_runner.py:1961] Loading model from scratch...
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:31 [gpu_model_runner.py:1961] Loading model from scratch...
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:31 [gpu_model_runner.py:1961] Loading model from scratch...
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:31 [cuda.py:328] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:31 [cuda.py:328] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:31 [cuda.py:328] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:31 [cuda.py:328] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:31 [layer.py:823] [EP Rank 3/4] Expert parallelism is enabled. Local/global number of experts: 2/8. Experts local to global index map: 0->6, 1->7.
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:31 [layer.py:823] [EP Rank 1/4] Expert parallelism is enabled. Local/global number of experts: 2/8. Experts local to global index map: 0->2, 1->3.
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:31 [layer.py:823] [EP Rank 2/4] Expert parallelism is enabled. Local/global number of experts: 2/8. Experts local to global index map: 0->4, 1->5.
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:31 [layer.py:823] [EP Rank 0/4] Expert parallelism is enabled. Local/global number of experts: 2/8. Experts local to global index map: 0->0, 1->1.
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:02:32 [weight_utils.py:294] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:02:32 [weight_utils.py:294] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:02:32 [weight_utils.py:294] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:02:32 [weight_utils.py:294] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/19 [00:00<?, ?it/s]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:   5% Completed | 1/19 [00:01<00:26,  1.49s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  11% Completed | 2/19 [00:03<00:25,  1.51s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  16% Completed | 3/19 [00:04<00:26,  1.63s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  21% Completed | 4/19 [00:08<00:35,  2.37s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  26% Completed | 5/19 [00:10<00:31,  2.22s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  32% Completed | 6/19 [00:14<00:38,  2.96s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  37% Completed | 7/19 [00:17<00:36,  3.07s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  42% Completed | 8/19 [00:19<00:28,  2.59s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  47% Completed | 9/19 [00:25<00:36,  3.62s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  53% Completed | 10/19 [00:31<00:40,  4.48s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  58% Completed | 11/19 [00:33<00:27,  3.49s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  63% Completed | 12/19 [00:34<00:19,  2.76s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  68% Completed | 13/19 [00:35<00:13,  2.21s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  74% Completed | 14/19 [00:35<00:08,  1.75s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  79% Completed | 15/19 [00:36<00:05,  1.44s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  84% Completed | 16/19 [00:37<00:03,  1.31s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  89% Completed | 17/19 [00:38<00:02,  1.12s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards:  95% Completed | 18/19 [00:41<00:01,  1.74s/it]
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:03:16 [default_loader.py:267] Loading weights took 43.93 seconds
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:43<00:00,  1.75s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m Loading safetensors checkpoint shards: 100% Completed | 19/19 [00:43<00:00,  2.27s/it]
+[1;36m(EngineCore_0 pid=1301622)[0;0m 
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:03:16 [default_loader.py:267] Loading weights took 43.18 seconds
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:03:17 [gpu_model_runner.py:1983] Model loading took 23.9987 GiB and 44.790998 seconds
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:03:17 [default_loader.py:267] Loading weights took 43.73 seconds
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:03:17 [gpu_model_runner.py:1983] Model loading took 23.9987 GiB and 45.375476 seconds
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:03:17 [default_loader.py:267] Loading weights took 44.48 seconds
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:03:17 [gpu_model_runner.py:1983] Model loading took 23.9987 GiB and 45.478427 seconds
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:03:17 [gpu_model_runner.py:1983] Model loading took 23.9987 GiB and 45.935234 seconds
+[1;36m(EngineCore_3 pid=1301625)[0;0m WARNING 12-20 01:03:19 [fused_moe.py:727] Using default MoE config. Performance might be sub-optimal! Config file not found at ['/pscratch/sd/s/sz755/MoE_Kernel_Performance_Analysis/vllm/vllm/model_executor/layers/fused_moe/configs/E=2,N=14336,device_name=NVIDIA_A100-SXM4-40GB.json']
+[1;36m(EngineCore_1 pid=1301623)[0;0m WARNING 12-20 01:03:19 [fused_moe.py:727] Using default MoE config. Performance might be sub-optimal! Config file not found at ['/pscratch/sd/s/sz755/MoE_Kernel_Performance_Analysis/vllm/vllm/model_executor/layers/fused_moe/configs/E=2,N=14336,device_name=NVIDIA_A100-SXM4-40GB.json']
+[1;36m(EngineCore_2 pid=1301624)[0;0m WARNING 12-20 01:03:19 [fused_moe.py:727] Using default MoE config. Performance might be sub-optimal! Config file not found at ['/pscratch/sd/s/sz755/MoE_Kernel_Performance_Analysis/vllm/vllm/model_executor/layers/fused_moe/configs/E=2,N=14336,device_name=NVIDIA_A100-SXM4-40GB.json']
+[1;36m(EngineCore_0 pid=1301622)[0;0m WARNING 12-20 01:03:19 [fused_moe.py:727] Using default MoE config. Performance might be sub-optimal! Config file not found at ['/pscratch/sd/s/sz755/MoE_Kernel_Performance_Analysis/vllm/vllm/model_executor/layers/fused_moe/configs/E=2,N=14336,device_name=NVIDIA_A100-SXM4-40GB.json']
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:03:30 [gpu_worker.py:276] Available KV cache memory: 4.48 GiB
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:03:30 [gpu_worker.py:276] Available KV cache memory: 4.48 GiB
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:03:30 [gpu_worker.py:276] Available KV cache memory: 4.48 GiB
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:03:30 [gpu_worker.py:276] Available KV cache memory: 4.48 GiB
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:03:31 [kv_cache_utils.py:849] GPU KV cache size: 36,688 tokens
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:03:31 [kv_cache_utils.py:853] Maximum concurrency for 4,096 tokens per request: 8.96x
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:03:31 [kv_cache_utils.py:849] GPU KV cache size: 36,688 tokens
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:03:31 [kv_cache_utils.py:853] Maximum concurrency for 4,096 tokens per request: 8.96x
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:03:31 [kv_cache_utils.py:849] GPU KV cache size: 36,688 tokens
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:03:31 [kv_cache_utils.py:853] Maximum concurrency for 4,096 tokens per request: 8.96x
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:03:31 [kv_cache_utils.py:849] GPU KV cache size: 36,688 tokens
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:03:31 [kv_cache_utils.py:853] Maximum concurrency for 4,096 tokens per request: 8.96x
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:03:31 [core.py:215] init engine (profile, create kv cache, warmup model) took 13.86 seconds
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:03:31 [core.py:215] init engine (profile, create kv cache, warmup model) took 13.77 seconds
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:03:31 [core.py:215] init engine (profile, create kv cache, warmup model) took 13.28 seconds
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:03:31 [core.py:215] init engine (profile, create kv cache, warmup model) took 14.25 seconds
+[1;36m(EngineCore_1 pid=1301623)[0;0m /pscratch/sd/s/sz755/MoE_Kernel_Performance_Analysis/vllm/vllm/transformers_utils/tokenizer_group.py:26: FutureWarning: It is strongly recommended to run mistral models with `--tokenizer-mode "mistral"` to ensure correct encoding and decoding.
+[1;36m(EngineCore_1 pid=1301623)[0;0m   self.tokenizer = get_tokenizer(self.tokenizer_id, **tokenizer_config)
+[1;36m(EngineCore_0 pid=1301622)[0;0m /pscratch/sd/s/sz755/MoE_Kernel_Performance_Analysis/vllm/vllm/transformers_utils/tokenizer_group.py:26: FutureWarning: It is strongly recommended to run mistral models with `--tokenizer-mode "mistral"` to ensure correct encoding and decoding.
+[1;36m(EngineCore_0 pid=1301622)[0;0m   self.tokenizer = get_tokenizer(self.tokenizer_id, **tokenizer_config)
+[1;36m(EngineCore_3 pid=1301625)[0;0m /pscratch/sd/s/sz755/MoE_Kernel_Performance_Analysis/vllm/vllm/transformers_utils/tokenizer_group.py:26: FutureWarning: It is strongly recommended to run mistral models with `--tokenizer-mode "mistral"` to ensure correct encoding and decoding.
+[1;36m(EngineCore_3 pid=1301625)[0;0m   self.tokenizer = get_tokenizer(self.tokenizer_id, **tokenizer_config)
+[1;36m(EngineCore_2 pid=1301624)[0;0m /pscratch/sd/s/sz755/MoE_Kernel_Performance_Analysis/vllm/vllm/transformers_utils/tokenizer_group.py:26: FutureWarning: It is strongly recommended to run mistral models with `--tokenizer-mode "mistral"` to ensure correct encoding and decoding.
+[1;36m(EngineCore_2 pid=1301624)[0;0m   self.tokenizer = get_tokenizer(self.tokenizer_id, **tokenizer_config)
+INFO 12-20 01:03:32 [coordinator.py:187] All engine subscriptions received by DP coordinator
+[1;36m(EngineCore_3 pid=1301625)[0;0m INFO 12-20 01:03:32 [__init__.py:3638] Cudagraph is disabled under eager mode
+[1;36m(EngineCore_0 pid=1301622)[0;0m INFO 12-20 01:03:32 [__init__.py:3638] Cudagraph is disabled under eager mode
+[1;36m(EngineCore_2 pid=1301624)[0;0m INFO 12-20 01:03:32 [__init__.py:3638] Cudagraph is disabled under eager mode
+[1;36m(EngineCore_1 pid=1301623)[0;0m INFO 12-20 01:03:32 [__init__.py:3638] Cudagraph is disabled under eager mode
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [loggers.py:142] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 9172
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [loggers.py:142] Engine 001: vllm cache_config_info with initialization after num_gpu_blocks is: 9172
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [loggers.py:142] Engine 002: vllm cache_config_info with initialization after num_gpu_blocks is: 9172
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [loggers.py:142] Engine 003: vllm cache_config_info with initialization after num_gpu_blocks is: 9172
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [async_llm.py:165] Torch profiler disabled. AsyncLLM CPU traces will not be collected.
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [api_server.py:1679] Supported_tasks: ['generate']
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [api_server.py:1950] Starting vLLM API server 0 on http://0.0.0.0:8000
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:36] Available routes are:
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /openapi.json, Methods: GET, HEAD
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /docs, Methods: GET, HEAD
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /redoc, Methods: GET, HEAD
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /health, Methods: GET
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /load, Methods: GET
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /ping, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /ping, Methods: GET
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /tokenize, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /detokenize, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/models, Methods: GET
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /version, Methods: GET
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/responses, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/responses/{response_id}, Methods: GET
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/responses/{response_id}/cancel, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/chat/completions, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/completions, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/embeddings, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /pooling, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /classify, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /score, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/score, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/audio/transcriptions, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/audio/translations, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /rerank, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v1/rerank, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /v2/rerank, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /scale_elastic_ep, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /is_scaling_elastic_ep, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /invocations, Methods: POST
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:03:32 [launcher.py:44] Route: /metrics, Methods: GET
+[1;36m(APIServer pid=1301285)[0;0m INFO:     Started server process [1301285]
+[1;36m(APIServer pid=1301285)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=1301285)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:58182 - "GET /health HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:49616 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(EngineCore_0 pid=1301622)[0;0m WARNING 12-20 01:04:00 [cudagraph_dispatcher.py:101] cudagraph dispatching keys are not initialized. No cudagraph will be used.
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:03 [loggers.py:123] Engine 000: Avg prompt throughput: 1.4 tokens/s, Avg generation throughput: 4.3 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.2%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46636 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46642 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46654 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46666 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46674 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46684 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46690 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46702 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46710 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46716 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46728 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46734 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46742 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46746 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46752 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46754 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46768 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46770 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46772 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46784 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46790 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46796 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46804 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46808 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46822 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46836 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46838 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46840 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46856 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46866 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46868 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46882 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46890 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46902 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(EngineCore_3 pid=1301625)[0;0m WARNING 12-20 01:04:08 [cudagraph_dispatcher.py:101] cudagraph dispatching keys are not initialized. No cudagraph will be used.
+[1;36m(EngineCore_1 pid=1301623)[0;0m WARNING 12-20 01:04:08 [cudagraph_dispatcher.py:101] cudagraph dispatching keys are not initialized. No cudagraph will be used.
+[1;36m(EngineCore_2 pid=1301624)[0;0m WARNING 12-20 01:04:08 [cudagraph_dispatcher.py:101] cudagraph dispatching keys are not initialized. No cudagraph will be used.
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46910 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46920 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46936 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46952 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46954 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46966 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46976 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:46990 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:47000 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:47010 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:47014 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:47020 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:47026 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:47028 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:47034 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO:     127.0.0.1:47046 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:13 [loggers.py:123] Engine 000: Avg prompt throughput: 301.5 tokens/s, Avg generation throughput: 45.9 tokens/s, Running: 7 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.7%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:13 [loggers.py:123] Engine 001: Avg prompt throughput: 438.6 tokens/s, Avg generation throughput: 39.1 tokens/s, Running: 7 reqs, Waiting: 0 reqs, GPU KV cache usage: 6.4%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:13 [loggers.py:123] Engine 002: Avg prompt throughput: 304.5 tokens/s, Avg generation throughput: 43.6 tokens/s, Running: 9 reqs, Waiting: 0 reqs, GPU KV cache usage: 5.4%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:13 [loggers.py:123] Engine 003: Avg prompt throughput: 247.5 tokens/s, Avg generation throughput: 49.4 tokens/s, Running: 10 reqs, Waiting: 0 reqs, GPU KV cache usage: 5.7%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:23 [loggers.py:123] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 67.6 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.6%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:23 [loggers.py:123] Engine 001: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 80.4 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 5.6%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:23 [loggers.py:123] Engine 002: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 114.8 tokens/s, Running: 6 reqs, Waiting: 0 reqs, GPU KV cache usage: 5.5%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:23 [loggers.py:123] Engine 003: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 121.3 tokens/s, Running: 7 reqs, Waiting: 0 reqs, GPU KV cache usage: 5.5%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:33 [loggers.py:123] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 31.8 tokens/s, Running: 2 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.0%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:33 [loggers.py:123] Engine 001: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 38.1 tokens/s, Running: 2 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.7%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:33 [loggers.py:123] Engine 002: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 55.4 tokens/s, Running: 2 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.9%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:33 [loggers.py:123] Engine 003: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 68.9 tokens/s, Running: 5 reqs, Waiting: 0 reqs, GPU KV cache usage: 6.1%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:43 [loggers.py:123] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 23.6 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.5%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:43 [loggers.py:123] Engine 001: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 28.0 tokens/s, Running: 2 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.4%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:43 [loggers.py:123] Engine 002: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 28.0 tokens/s, Running: 2 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.7%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:43 [loggers.py:123] Engine 003: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 41.2 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 1.3%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:53 [loggers.py:123] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 11.8 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:53 [loggers.py:123] Engine 001: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 25.6 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 1.7%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:53 [loggers.py:123] Engine 002: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 20.1 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.8%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:04:53 [loggers.py:123] Engine 003: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 14.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 1.7%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:03 [loggers.py:123] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:03 [loggers.py:123] Engine 001: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 14.4 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.1%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:03 [loggers.py:123] Engine 002: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 14.4 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.1%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:03 [loggers.py:123] Engine 003: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 14.4 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.1%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:13 [loggers.py:123] Engine 001: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 14.7 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.5%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:13 [loggers.py:123] Engine 002: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 1.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:13 [loggers.py:123] Engine 003: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 14.7 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.5%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:23 [loggers.py:123] Engine 001: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 8.7 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:23 [loggers.py:123] Engine 002: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:23 [loggers.py:123] Engine 003: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 4.4 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:33 [loggers.py:123] Engine 001: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=1301285)[0;0m INFO 12-20 01:05:33 [loggers.py:123] Engine 003: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
