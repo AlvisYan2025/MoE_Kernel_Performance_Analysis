@@ -58,12 +58,15 @@ def sample_custom_dataset(
     num_requests: int,
     tokenizer: PreTrainedTokenizerBase,
     fixed_output_len: Optional[int] = None,
-) -> Tuple[List[Tuple[str, int, int]], float]:
+) -> Tuple[List[Tuple[str, int, int]], dict]:
     """
-    Load custom JSONL dataset and compute imbalance score.
+    Load custom JSONL dataset and compute imbalance score with all components.
     
     Returns:
-        Tuple of (dataset, imbalance_score)
+        Tuple of (dataset, imbalance_data) where imbalance_data contains:
+            - imbalance_score: float
+            - components: dict with individual component contributions
+            - raw_metrics: dict with raw computed metrics
     """
     # Load dataset
     samples = []
@@ -76,9 +79,9 @@ def sample_custom_dataset(
     if len(samples) > num_requests:
         samples = random.sample(samples, num_requests)
     
-    # Compute imbalance score
+    # Compute imbalance score with all components
     predictor = ImbalancePredictor()
-    imbalance_score = predictor.predict(samples)
+    imbalance_data = predictor.predict(samples, return_components=True)
     
     # Tokenize and prepare dataset
     dataset = []
@@ -92,7 +95,7 @@ def sample_custom_dataset(
         
         dataset.append((text, prompt_len, output_len))
     
-    return dataset, imbalance_score
+    return dataset, imbalance_data
 
 
 def sample_sharegpt_requests(
@@ -356,8 +359,8 @@ def main(args: argparse.Namespace):
     tokenizer = get_tokenizer(tokenizer_id,
                               trust_remote_code=args.trust_remote_code)
 
-    # Initialize imbalance score
-    imbalance_score = None
+    # Initialize imbalance data
+    imbalance_data = None
 
     # Load dataset based on type
     if args.dataset_name == "custom":
@@ -365,16 +368,27 @@ def main(args: argparse.Namespace):
         if args.dataset_path is None:
             raise ValueError("--dataset-path required for custom dataset")
         
-        input_requests, imbalance_score = sample_custom_dataset(
+        input_requests, imbalance_data = sample_custom_dataset(
             dataset_path=args.dataset_path,
             num_requests=args.num_prompts,
             tokenizer=tokenizer,
             fixed_output_len=args.custom_output_len,
         )
         
+        imbalance_score = imbalance_data.get('imbalance_score', 0.0)
+        
         print(f"\n{'='*60}")
         print(f"Dataset: {args.dataset_path}")
         print(f"Predicted Imbalance Score: {imbalance_score:.4f}")
+        
+        # Print component contributions
+        if 'components' in imbalance_data:
+            print(f"\nComponent Contributions:")
+            for comp_name, comp_info in imbalance_data['components'].items():
+                print(f"  {comp_name}:")
+                print(f"    Value: {comp_info.get('value', 'N/A')}")
+                print(f"    Contribution: {comp_info.get('contribution', 0.0):.4f} ({comp_info.get('percentage', 0.0):.1f}%)")
+        
         print(f"{'='*60}\n")
 
     elif args.dataset_name == "sharegpt":
@@ -417,9 +431,18 @@ def main(args: argparse.Namespace):
         result_json["dataset_name"] = args.dataset_name
         result_json["dataset_path"] = args.dataset_path
 
-        # Add imbalance score if available
-        if imbalance_score is not None:
-            result_json["imbalance_score"] = imbalance_score
+        # Add imbalance data if available (score, components, raw_metrics)
+        if imbalance_data is not None:
+            # Store the main imbalance score for backward compatibility
+            result_json["imbalance_score"] = imbalance_data.get('imbalance_score', 0.0)
+            
+            # Store all components with their raw values and contributions
+            if 'components' in imbalance_data:
+                result_json["imbalance_components"] = imbalance_data['components']
+            
+            # Store raw metrics for reference
+            if 'raw_metrics' in imbalance_data:
+                result_json["imbalance_raw_metrics"] = imbalance_data['raw_metrics']
 
         # Metadata
         if args.metadata:
@@ -439,13 +462,32 @@ def main(args: argparse.Namespace):
         # Merge with benchmark result
         result_json = {**result_json, **benchmark_result}
 
-        # Save to file
-        base_model_id = model_id.split("/")[-1]
-        dataset_basename = os.path.basename(args.dataset_path).replace('.jsonl', '') if args.dataset_path else args.dataset_name
-        file_name = f"{backend}-{dataset_basename}-{current_dt}.json"
-        if args.result_dir:
-            os.makedirs(args.result_dir, exist_ok=True)
-            file_name = os.path.join(args.result_dir, file_name)
+        # Save to file with dataset index naming convention
+        # Extract dataset index from filename (format: {index}_{score}.jsonl)
+        dataset_index = None
+        if args.dataset_path:
+            dataset_basename = os.path.basename(args.dataset_path).replace('.jsonl', '')
+            # Try to extract index from filename (e.g., "001_0.4168" -> "001")
+            if '_' in dataset_basename:
+                parts = dataset_basename.split('_', 1)
+                # Check if first part is numeric (the index)
+                if parts[0].isdigit():
+                    dataset_index = parts[0]
+        
+        # Use dataset index if available, otherwise fallback to original naming
+        if dataset_index is not None:
+            output_dir = "results_json"
+            os.makedirs(output_dir, exist_ok=True)
+            file_name = os.path.join(output_dir, f"{dataset_index}.json")
+        else:
+            # Fallback to original naming convention
+            base_model_id = model_id.split("/")[-1]
+            dataset_basename = os.path.basename(args.dataset_path).replace('.jsonl', '') if args.dataset_path else args.dataset_name
+            file_name = f"{backend}-{dataset_basename}-{current_dt}.json"
+            if args.result_dir:
+                os.makedirs(args.result_dir, exist_ok=True)
+                file_name = os.path.join(args.result_dir, file_name)
+        
         with open(file_name, "w") as outfile:
             json.dump(result_json, outfile, indent=2)
         
