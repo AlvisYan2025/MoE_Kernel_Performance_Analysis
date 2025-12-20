@@ -6,3 +6,4 @@ transformers
 scikit-learn
 pandas
 PyYAML
+vllm==0.11.0

@@ -5,7 +5,7 @@ echo "creating virtual environment.."
 conda create --prefix ./myenvs/vllm_env_conda python=3.11 -y
 conda activate ./myenvs/vllm_env_conda
 python3 -m pip install --upgrade pip
-python3 -m pip install -r requirements.txt
+#python3 -m pip install -r requirements.txt
 echo "done" 
 
 
@@ -19,7 +19,7 @@ cd vllm
 
 git reset --hard 2f13319f47eb9a78b471c5ced0fcf90862cd16a2
 VLLM_USE_PRECOMPILED=1 python3 -m pip install -e .
-python3 -m pip install -e . --no-build-isolation
+#python3 -m pip install -e . --no-build-isolation
 cd .. 
 
 #install model (mistralai/Mixtral-8x7B-v0.1)

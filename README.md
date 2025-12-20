@@ -64,6 +64,36 @@ MoE_Kernel_Performance_Analysis/
 
 ### Setup
 
+#### Option 1: Virtual Environment Setup (Recommended)
+
+This method creates a conda virtual environment with vLLM and all dependencies:
+
+1. **Allocate compute node** (NERSC Perlmutter example):
+   ```bash
+   salloc --nodes=1 --qos=interactive --time=01:00:00 --constraint=gpu --gpus=4 --account=m4999
+   ```
+
+2. **Install virtual environment with vLLM**:
+   ```bash
+   chmod +x install.sh && ./install.sh
+   ```
+   
+   This script:
+   - Creates a conda environment at `./myenvs/vllm_env_conda`
+   - Installs Python 3.11 and required packages
+   - Clones and installs vLLM (commit 2f13319f)
+   - Downloads the Mixtral-8x7B-v0.1 model to `./hf_cache/`
+   - Sets up HuggingFace cache directory
+
+3. **Load the environment** (for each new session):
+   ```bash
+   chmod +x loadenvs.sh && source loadenvs.sh
+   ```
+   
+   This activates the conda environment and sets up the HuggingFace cache directory.
+
+#### Option 2: Manual Setup
+
 1. **Clone the repository** (if applicable)
 
 2. **Install Python dependencies**:
@@ -76,16 +106,15 @@ MoE_Kernel_Performance_Analysis/
    - `transformers`, `scikit-learn` - Tokenization and NLP analysis
    - `PyYAML` - Configuration file parsing
 
-3. **Install vLLM** (for running experiments):
+3. **Install vLLM manually** (if not using virtual environment):
    ```bash
    # Allocate compute node (NERSC Perlmutter example)
    salloc --nodes=1 --qos=interactive --time=01:00:00 --constraint=gpu --gpus=4 --account=m4999
    
-   # Install vLLM and dependencies
-   chmod +x install_conda.sh && ./install_conda.sh
-   
-   # Load environment
-   chmod +x loadenvs_conda.sh && source loadenvs_conda.sh
+   # Follow vLLM installation instructions
+   git clone https://github.com/vllm-project/vllm/
+   cd vllm
+   pip install -e .
    ```
 
 ## Experiments
