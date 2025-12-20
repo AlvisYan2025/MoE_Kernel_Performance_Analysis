@@ -4,7 +4,7 @@ MODEL=${1:-"mistralai/Mixtral-8x7B-v0.1"}
 PORT=${2:-8000}
 
 # ===== baseline defaults =====
-BATCH_TOKENS=${3:-8192}     # max-num-batched-tokens
+BATCH_TOKENS=${3:-16384}     # max-num-batched-tokens
 MAX_SEQS=${4:-32}            # max-num-seqs
 MAX_MODEL_LEN=${5:-4096}    # max-model-len
 # =============================
