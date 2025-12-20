@@ -317,6 +317,7 @@ def generate_all_datasets(output_dir="datasets", graph_dir="graphs", n_datasets=
     # Generate datasets
     all_datasets = []
     imbalance_scores = []
+    dataset_index = 0
     
     print("Generating datasets and computing imbalance scores...")
     print("=" * 70)
@@ -335,13 +336,18 @@ def generate_all_datasets(output_dir="datasets", graph_dir="graphs", n_datasets=
             # Format score for filename (4 decimal places)
             score_str = f"{score:.4f}"
             
-            # Save dataset
-            filepath = output_path / f"{score_str}.jsonl"
+            # Increment dataset index and format with zero-padding
+            dataset_index += 1
+            index_str = f"{dataset_index:03d}"  # 3-digit zero-padded index
+            
+            # Save dataset with index prefix
+            filepath = output_path / f"{index_str}_{score_str}.jsonl"
             with open(filepath, 'w') as f:
                 for item in dataset:
                     f.write(json.dumps(item) + '\n')
             
             all_datasets.append({
+                'index': dataset_index,
                 'score': score,
                 'score_str': score_str,
                 'filepath': str(filepath),
@@ -350,7 +356,7 @@ def generate_all_datasets(output_dir="datasets", graph_dir="graphs", n_datasets=
             })
             imbalance_scores.append(score)
             
-            print(f"✓ {strategy_name:30s} → Score: {score:.4f} → {filepath.name}")
+            print(f"✓ [{dataset_index:3d}] {strategy_name:30s} → Score: {score:.4f} → {filepath.name}")
             
         except Exception as e:
             print(f"✗ {strategy_name:30s} → Error: {e}")
@@ -396,13 +402,18 @@ def generate_all_datasets(output_dir="datasets", graph_dir="graphs", n_datasets=
             # Format score for filename
             score_str = f"{score:.4f}"
             
-            # Save dataset (overwrite if same score exists)
-            filepath = output_path / f"{score_str}.jsonl"
+            # Increment dataset index and format with zero-padding
+            dataset_index += 1
+            index_str = f"{dataset_index:03d}"  # 3-digit zero-padded index
+            
+            # Save dataset with index prefix (overwrite if same score exists)
+            filepath = output_path / f"{index_str}_{score_str}.jsonl"
             with open(filepath, 'w') as f:
                 for item in dataset:
                     f.write(json.dumps(item) + '\n')
             
             all_datasets.append({
+                'index': dataset_index,
                 'score': score,
                 'score_str': score_str,
                 'filepath': str(filepath),
@@ -411,7 +422,7 @@ def generate_all_datasets(output_dir="datasets", graph_dir="graphs", n_datasets=
             })
             imbalance_scores.append(score)
             
-            print(f"✓ random_{n_domains}_domains → Score: {score:.4f} → {filepath.name}")
+            print(f"✓ [{dataset_index:3d}] random_{n_domains}_domains → Score: {score:.4f} → {filepath.name}")
             
         except Exception as e:
             print(f"✗ random generation → Error: {e}")
