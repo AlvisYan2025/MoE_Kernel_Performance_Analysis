@@ -129,6 +129,9 @@ python tools/main.py --trace trace_collection/Mixtral8x7B-vllmEP4-Perlmutter[def
 
 # Extract expert assignment metrics
 python tools/main.py --trace trace_collection/Mixtral8x7B-vllmEP4-Perlmutter[defaultall2all_32_8192]-group12 --metric token_to_expert_assignment
+
+# Analyze communication overhead (EPLB comparison)
+python tools/main.py --metric communicationOverhead --csv1 EPLBOFF.csv --csv2 EPLBON.csv
 ```
 
 **Available metric names**:
@@ -137,10 +140,12 @@ python tools/main.py --trace trace_collection/Mixtral8x7B-vllmEP4-Perlmutter[def
 - `request_throughput`
 - `output_throughput`
 - `token_to_expert_assignment`
+- `communicationOverhead` (requires `--csv1` and `--csv2` instead of `--trace`)
 
 **Output**:
 - For numeric metrics: Prints a single float value (average across all JSON files)
 - For `token_to_expert_assignment`: Prints JSON object with detailed statistics
+- For `communicationOverhead`: Prints detailed comparison to stdout and saves JSON results to `kernel_comparison_results.json`
 
 ### Direct Script Execution
 
@@ -156,8 +161,14 @@ python tools/tokenToExpertAssignment-group_12/extract.py <trace_directory>
 
 ### Communication Overhead Analysis (EPLB)
 
-The `communicationOverhead-group_12` tool analyzes CUDA kernel summaries from Nsight Systems traces to compare EPLB ON vs OFF:
+The `communicationOverhead-group_12` tool analyzes CUDA kernel summaries from Nsight Systems traces to compare EPLB ON vs OFF.
 
+**Via main.py (recommended)**:
+```bash
+python tools/main.py --metric communicationOverhead --csv1 <eplb_off.csv> --csv2 <eplb_on.csv>
+```
+
+**Direct script execution**:
 ```bash
 python tools/communicationOverhead-group_12/analyzeEPLB.py <eplb_off.csv> <eplb_on.csv>
 ```
@@ -170,7 +181,7 @@ python tools/communicationOverhead-group_12/analyzeEPLB.py <eplb_off.csv> <eplb_
 
 **Example**:
 ```bash
-python tools/communicationOverhead-group_12/analyzeEPLB.py EPLBOFF.csv EPLBON.csv
+python tools/main.py --metric communicationOverhead --csv1 EPLBOFF.csv --csv2 EPLBON.csv
 ```
 
 **Output**:
