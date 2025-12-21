@@ -121,18 +121,20 @@ python tools/main.py --trace <trace_directory> --metric <metric_name>
 
 **Examples**:
 ```bash
-# Extract TTFT from a baseline experiment
-python tools/main.py --trace trace_collection/Mixtral8x7B-vllmTP4-Perlmutter[baseline_32_8192]-group12 --metric TTFT
+# Extract TTFT from a baseline experiment (note: quote paths with square brackets in zsh)
+python tools/main.py --trace "trace_collection/Mixtral8x7B-vllmTP4-Perlmutter[baseline_32_8192]-group12" --metric TTFT
 
 # Extract request throughput
-python tools/main.py --trace trace_collection/Mixtral8x7B-vllmEP4-Perlmutter[defaultall2all_32_8192]-group12 --metric request_throughput
+python tools/main.py --trace "trace_collection/Mixtral8x7B-vllmEP4-Perlmutter[defaultall2all_32_8192]-group12" --metric request_throughput
 
 # Extract expert assignment metrics
-python tools/main.py --trace trace_collection/Mixtral8x7B-vllmEP4-Perlmutter[defaultall2all_32_8192]-group12 --metric token_to_expert_assignment
+python tools/main.py --trace "trace_collection/Mixtral8x7B-vllmEP4-Perlmutter[defaultall2all_32_8192]-group12" --metric token_to_expert_assignment
 
 # Analyze communication overhead (EPLB comparison)
 python tools/main.py --metric communicationOverhead --csv1 EPLBOFF.csv --csv2 EPLBON.csv
 ```
+
+**Note**: In zsh, paths containing square brackets `[]` must be quoted. Always quote trace directory paths to avoid "no matches found" errors.
 
 **Available metric names**:
 - `TTFT`
@@ -152,11 +154,17 @@ python tools/main.py --metric communicationOverhead --csv1 EPLBOFF.csv --csv2 EP
 You can also run extraction scripts directly:
 
 ```bash
-python tools/TTFT-group_12/extract.py <trace_directory>
-python tools/TPOT-group_12/extract.py <trace_directory>
-python tools/requestThroughput-group_12/extract.py <trace_directory>
-python tools/outputThroughput-group_12/extract.py <trace_directory>
-python tools/tokenToExpertAssignment-group_12/extract.py <trace_directory>
+# Note: Quote paths with square brackets in zsh
+python tools/TTFT-group_12/extract.py "<trace_directory>"
+python tools/TPOT-group_12/extract.py "<trace_directory>"
+python tools/requestThroughput-group_12/extract.py "<trace_directory>"
+python tools/outputThroughput-group_12/extract.py "<trace_directory>"
+python tools/tokenToExpertAssignment-group_12/extract.py "<trace_directory>"
+```
+
+**Example**:
+```bash
+python tools/TTFT-group_12/extract.py "trace_collection/Mixtral8x7B-vllmTP4-Perlmutter[baseline_32_8192]-group12"
 ```
 
 ### Communication Overhead Analysis (EPLB)
