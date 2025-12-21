@@ -121,9 +121,21 @@ if __name__ == "__main__":
     else:
         gates_logs_dir = Path("baseline_gates_logs")
     
+    if not gates_logs_dir.exists():
+        error_msg = f"Gates logs directory not found: {gates_logs_dir}. Expected directory matching '*gates_logs*' in trace directory."
+        print(json.dumps({"error": error_msg}), file=sys.stderr)
+        sys.exit(1)
+    
+    if not gates_logs_dir.is_dir():
+        error_msg = f"Path exists but is not a directory: {gates_logs_dir}"
+        print(json.dumps({"error": error_msg}), file=sys.stderr)
+        sys.exit(1)
+    
     result = extract_token_to_expert_assignment(gates_logs_dir)
     if result:
         print(json.dumps(result, indent=2))
     else:
-        print(json.dumps({"error": "No data found"}))
+        error_msg = f"No gate log data found in {gates_logs_dir}. Ensure the directory contains 'gates_logs_*' subdirectories with 'gate_logs_*.json' files containing 'expert_loads' data."
+        print(json.dumps({"error": error_msg}), file=sys.stderr)
+        sys.exit(1)
 
