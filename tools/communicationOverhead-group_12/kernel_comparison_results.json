@@ -1,0 +1,150 @@
+{
+  "baseline": {
+    "label": "EPLB OFF (Baseline)",
+    "moe_kernels": [
+      "void vllm::moe::moe_align_block_size_kernel<int>(const T1 *, int *, int *, int *, int, int, int, int, unsigned long, int *, int)",
+      "void vllm::moe::count_and_sort_expert_tokens_kernel<int>(const T1 *, int *, int *, unsigned long, int)",
+      "void vllm::moe::topkGatingSoftmax<(int)4, (int)8, (int)4, (int)16, (int)32, int>(const float *, const bool *, float *, int, T6 *, int *, int, int, int)",
+      "void vllm::moe::moe_sum_kernel<c10::BFloat16, (int)2>(T1 *, const T1 *, int)",
+      "void vllm::moe::moe_align_block_size_small_batch_expert_kernel<int>(const T1 *, int *, int *, int *, int, int, unsigned long, int)",
+      "fused_moe_kernel"
+    ],
+    "moe_total_time_ms": 104394.297,
+    "moe_time_pct": 49.0,
+    "moe_instances": 669198,
+    "fused_moe_total_ms": 102664.0,
+    "fused_moe_avg_us": 383.682,
+    "fused_moe_min_us": 2.592,
+    "fused_moe_max_us": 239809.0,
+    "fused_moe_std_us": 2472.0,
+    "fused_moe_instances": 267576,
+    "fused_moe_max_min_ratio": 92518.90432098765,
+    "fused_moe_cv": 6.442835473126182,
+    "fused_moe_med_us": 346.878,
+    "fused_moe_med_mean_ratio": 0.9040768136112718,
+    "nccl_kernels": [
+      "ncclDevKernel_AllReduce_Sum_f32_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+      "ncclDevKernel_AllReduce_Sum_u32_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+      "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+      "ncclDevKernel_Broadcast_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+      "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)"
+    ],
+    "nccl_total_time_ms": 85965.246,
+    "nccl_time_pct": 40.4,
+    "nccl_instances": 271769,
+    "allreduce_total_ms": 1272.246,
+    "allreduce_instances": 4191,
+    "attention_total_ms": 2421.454,
+    "attention_time_pct": 1.1,
+    "top5_kernels": [
+      {
+        "name": "fused_moe_kernel",
+        "total_ms": 102664.0,
+        "pct": 48.3,
+        "instances": 267576
+      },
+      {
+        "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+        "total_ms": 71065.0,
+        "pct": 33.4,
+        "instances": 133788
+      },
+      {
+        "name": "ncclDevKernel_Broadcast_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+        "total_ms": 7245.0,
+        "pct": 3.4,
+        "instances": 73088
+      },
+      {
+        "name": "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+        "total_ms": 6383.0,
+        "pct": 3.0,
+        "instances": 60702
+      },
+      {
+        "name": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_f2f_stages_64x6_tn",
+        "total_ms": 3990.0,
+        "pct": 1.9,
+        "instances": 133695
+      }
+    ],
+    "total_kernel_time_ms": 212526.338643,
+    "total_kernel_instances": 3340426
+  },
+  "eplb": {
+    "label": "EPLB ON",
+    "moe_kernels": [
+      "void vllm::moe::moe_align_block_size_kernel<int>(const T1 *, int *, int *, int *, int, int, int, int, unsigned long, int *, int)",
+      "void vllm::moe::count_and_sort_expert_tokens_kernel<int>(const T1 *, int *, int *, unsigned long, int)",
+      "void vllm::moe::topkGatingSoftmax<(int)4, (int)8, (int)4, (int)16, (int)32, int>(const float *, const bool *, float *, int, T6 *, int *, int, int, int)",
+      "void vllm::moe::moe_sum_kernel<c10::BFloat16, (int)2>(T1 *, const T1 *, int)",
+      "void vllm::moe::moe_align_block_size_small_batch_expert_kernel<int>(const T1 *, int *, int *, int *, int, int, unsigned long, int)",
+      "fused_moe_kernel"
+    ],
+    "moe_total_time_ms": 110179.961,
+    "moe_time_pct": 49.0,
+    "moe_instances": 680109,
+    "fused_moe_total_ms": 108419.0,
+    "fused_moe_avg_us": 398.684,
+    "fused_moe_min_us": 2.624,
+    "fused_moe_max_us": 225736.0,
+    "fused_moe_std_us": 2446.0,
+    "fused_moe_instances": 271941,
+    "fused_moe_max_min_ratio": 86027.43902439025,
+    "fused_moe_cv": 6.135184757853337,
+    "fused_moe_med_us": 392.126,
+    "fused_moe_med_mean_ratio": 0.9835508824031061,
+    "nccl_kernels": [
+      "ncclDevKernel_AllReduce_Sum_f32_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+      "ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+      "ncclDevKernel_AllReduce_Sum_u32_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+      "ncclDevKernel_Broadcast_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+      "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)"
+    ],
+    "nccl_total_time_ms": 92534.086,
+    "nccl_time_pct": 41.2,
+    "nccl_instances": 276201,
+    "allreduce_total_ms": 1927.801,
+    "allreduce_instances": 4259,
+    "attention_total_ms": 1910.386,
+    "attention_time_pct": 0.8,
+    "top5_kernels": [
+      {
+        "name": "fused_moe_kernel",
+        "total_ms": 108419.0,
+        "pct": 48.3,
+        "instances": 271941
+      },
+      {
+        "name": "ncclDevKernel_Reduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+        "total_ms": 73868.0,
+        "pct": 32.9,
+        "instances": 135970
+      },
+      {
+        "name": "ncclDevKernel_Broadcast_RING_LL(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+        "total_ms": 15803.0,
+        "pct": 7.0,
+        "instances": 117763
+      },
+      {
+        "name": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_f2f_stages_64x6_tn",
+        "total_ms": 4061.0,
+        "pct": 1.8,
+        "instances": 135942
+      },
+      {
+        "name": "void vllm::act_and_mul_kernel<c10::BFloat16, &vllm::silu_kernel<c10::BFloat16>, (bool)1>(T1 *, const T1 *, int)",
+        "total_ms": 3242.0,
+        "pct": 1.4,
+        "instances": 135970
+      }
+    ],
+    "total_kernel_time_ms": 224513.176144,
+    "total_kernel_instances": 3306876
+  },
+  "comparison": {
+    "improved_count": 4,
+    "total_count": 8
+  }
+}
