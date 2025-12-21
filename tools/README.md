@@ -43,18 +43,32 @@ These metrics require traces from inference experiments (`phase: inference` in w
    - **Output Format**: JSON with totals, normalized distribution, and summary statistics (entropy, CV, max/min ratio)
    - **Requirements**: MoE model (`moe: true` in workload YAML) with `gates_logs` directory
 
+6. **communicationOverhead** (EPLB Analysis)
+   - **Location**: `communicationOverhead-group_12/`
+   - **Analyzes**: CUDA kernel summary CSVs from Nsight Systems traces
+   - **Purpose**: Compares Expert Parallel Load Balancing (EPLB) ON vs OFF performance
+   - **Input**: Two CSV files exported from Nsight Systems CUDA GPU Kernel Summary
+   - **Extracts**: 
+     - MoE kernel metrics (fused_moe_kernel stats, timing, variability)
+     - NCCL communication metrics (AllToAll, AllReduce timing and instances)
+     - Attention kernel timing
+     - Load balance metrics (CV, max/min ratios)
+   - **Output Format**: JSON file with detailed metrics and comparison results
+   - **Requirements**: CSV files exported from Nsight Systems traces
+
 ## Prerequisites
 
 ### Python Dependencies
 
 ```bash
-pip install PyYAML matplotlib
+pip install PyYAML matplotlib pandas numpy
 ```
 
 Required packages:
 - `PyYAML` - For parsing workload YAML configuration files
 - `matplotlib` - For generating plots (if using plotting scripts)
-- Standard library: `json`, `sys`, `pathlib`, `collections`, `math`, `subprocess`, `argparse`
+- `pandas`, `numpy` - For CSV parsing and numerical analysis (communicationOverhead tool)
+- Standard library: `json`, `sys`, `pathlib`, `collections`, `math`, `subprocess`, `argparse`, `re`
 
 ### Trace Directory Structure
 
@@ -139,6 +153,35 @@ python tools/requestThroughput-group_12/extract.py <trace_directory>
 python tools/outputThroughput-group_12/extract.py <trace_directory>
 python tools/tokenToExpertAssignment-group_12/extract.py <trace_directory>
 ```
+
+### Communication Overhead Analysis (EPLB)
+
+The `communicationOverhead-group_12` tool analyzes CUDA kernel summaries from Nsight Systems traces to compare EPLB ON vs OFF:
+
+```bash
+python tools/communicationOverhead-group_12/analyzeEPLB.py <eplb_off.csv> <eplb_on.csv>
+```
+
+**Preparing CSV files**:
+1. Open trace in Nsight Systems (`nsys-ui`)
+2. Navigate to "CUDA GPU Kernel Summary" in Analysis Summary
+3. Right-click → Export to CSV
+4. Export separate CSVs for EPLB OFF and EPLB ON traces
+
+**Example**:
+```bash
+python tools/communicationOverhead-group_12/analyzeEPLB.py EPLBOFF.csv EPLBON.csv
+```
+
+**Output**:
+- Prints detailed comparison to stdout (MoE kernel stats, NCCL metrics, load balance improvements)
+- Saves JSON results to `kernel_comparison_results.json` in the tool directory
+
+**Metrics analyzed**:
+- Fused MoE kernel timing (total, avg, min, max, stddev, CV)
+- NCCL communication time (AllToAll, AllReduce)
+- Communication/compute ratio
+- Load balance metrics (CV reduction, max/min ratio)
 
 ### Plotting
 
