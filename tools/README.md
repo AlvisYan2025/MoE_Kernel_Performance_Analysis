@@ -129,14 +129,18 @@ python tools/main.py --trace "trace_collection/Mixtral8x7B-vllmTP4-Perlmutter[ba
 python tools/main.py --trace "trace_collection/Mixtral8x7B-vllmEP4-Perlmutter[defaultall2all_32_8192]-group12" --metric request_throughput
 
 # Extract expert assignment metrics (use load_imbalance_experiment directory with gates_logs)
+# Note: If multiple gates_logs directories exist, the script uses the first one alphabetically (typically baseline_gates_logs)
 python tools/main.py --trace "scripts/load_imbalance_experiment-group12" --metric token_to_expert_assignment
-# The script will automatically find baseline_gates_logs or default_all2all_gates_logs
+
+# To specify a specific gates_logs directory, point directly to it:
+python tools/main.py --trace "scripts/load_imbalance_experiment-group12/baseline_gates_logs" --metric token_to_expert_assignment
+python tools/main.py --trace "scripts/load_imbalance_experiment-group12/default_all2all_gates_logs" --metric token_to_expert_assignment
 
 # Analyze communication overhead (EPLB comparison)
 python tools/main.py --metric communicationOverhead --csv1 tools/communicationOverhead-group_12/EPLBOFF.csv --csv2 tools/communicationOverhead-group_12/EPLBON.csv
 ```
 
-**Note**: In zsh, paths containing square brackets `[]` must be quoted. Always quote trace directory paths to avoid zsh parsing square brackets 
+**Note**: Always quote trace directory paths to avoid zsh parsing square brackets 
 
 **Available metric names**:
 - `TTFT`
